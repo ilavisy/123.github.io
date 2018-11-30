@@ -30,19 +30,19 @@
 					<td><font color="red"><b>Red</b></font></td>
 					<td><font color="green"><b>green</b></font></td>
 					<td><font color="blue"><b>blue</b></font></td>
-					<td><font color="ban"><b>fan</b></font></td>
+					
 				</tr>
 				<tr style="text-align: center;">
 					<td id="redvalue">0</td>
 					<td id="greenvalue">0</td>
 					<td id="bluevalue">0</td>
-					<td id="fanvalue">0</td>
+					
 				</tr>
 				<tr>
 					<td><input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255"></td>
 					<td><input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255"></td>
 					<td><input Onchange="fan(this.value);" type="range" id="bled" class="ledbar" value="0" min="0" max="255"></td>
-					<td><input Onchange="fan(this.value);" type="range" id="fan" style="margin-top: 25%;" value="0" min="0" max="255"></td>
+				
 				</tr>
 			</table>
 			<span id="showcolor"></span>
@@ -91,7 +91,7 @@
 	}
 	//fan
 	function fan(value) {
-		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
+		cpf.request('["analogWrite", 3, ' + Number(100) + ']');
 	}
 	// Temperature
 	function toCelsius(value) {
