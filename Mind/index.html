@@ -45,6 +45,18 @@
 			<span id="showcolor"></span>
 		</div>
 	</div>
+	<div class="output">
+			<div class="output_title">
+				<h2 style="margin-top: 5px;">Fan</h2>
+			</div>
+			<hr style="margin-top: 0px;">
+			<div class="output_img">
+				<img src="./images/fan.png" class="sensors" style="width: 55%; top: 5%;">
+			</div>
+			<div class="output_content">
+				<input Onchange="fan(this.value);" type="range" id="fan" style="margin-top: 25%;" value="0" min="0" max="255">
+			</div>
+		</div>
 </div>
 
 <script>
@@ -86,9 +98,9 @@
 		
 	}
 	//fan
-	//function fan(value) {
-	//	cpf.request('["analogWrite", 3, ' + Number(value) + ']');
-	//}
+	function fan(value) {
+		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
+	}
 	// Temperature
 	function toCelsius(value) {
 		var resistance = parseFloat((1023-value) * 10000 / value);
