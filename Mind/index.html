@@ -123,7 +123,7 @@
 				  document.getElementById("fanspeed").value=255;
 				 fan()
 				 }
-				}
+				
 			else if(mind1==0 && mind2==1 && mind3==0)
 				{
 					mindstate="尚可";
@@ -131,8 +131,8 @@
 				 document.getElementById("greenvalue").innerHTML = 0;
 				 document.getElementById("bluevalue").innerHTML = 0;
 				 changeColor();
-				 }
 				}
+				
 			else if(mind1==0 && mind2==1 && mind3==1)
 				{mindstate="不錯";
 				 document.getElementById("redvalue").innerHTML = 0;
@@ -148,7 +148,7 @@
 				 document.getElementById("bluevalue").innerHTML = 0;
 				 changeColor();
 				 }
-				}
+				
 			document.getElementById("Mindstate").innerHTML = mindstate;
 			
 		}
