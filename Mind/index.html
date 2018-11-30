@@ -48,7 +48,19 @@
 			<span id="showcolor"></span>
 		</div>
 	</div>
-	
+	<div class="output">
+			<div class="output_title">
+				<h2 style="margin-top: 5px;">Lighting</h2>
+			</div>
+			<hr style="margin-top: 0px;">
+			<div class="output_img">
+				<img src="./img/bulb.png" id="bulb" class="sensors" style="width: 30%; top: 5%;">
+			</div>
+			<div class="output_content">
+				<img src="./img/lighton.png" class="lighting" id="lighton">
+				<img src="./img/light_off.png" class="lighting" id="lightoff">
+			</div>
+		</div>
 </div>
 
 <script>
@@ -56,6 +68,8 @@
 	var lightdata;
 	var tempdata;
 	var celsius;
+	var lighton = document.getElementById("lighton");
+	var lightoff = document.getElementById("lightoff");
 	setup();
 	// Analog
 	function loop() {
@@ -94,6 +108,18 @@
 		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
 		document.getElementById("fanvalue").innerHTML = Number(value);
 	}
+	// LED開燈
+	lighton.addEventListener('touchstart', function(event) {
+		lighton.src= './img/light_on.png';
+		lightoff.src= './img/lightoff.png';
+		cpf.request('["digitalWrite", 2 , 1]');
+	});
+	// LED關燈
+	lightoff.addEventListener('touchstart', function(event) {
+		lightoff.src= './img/light_off.png';
+		lighton.src= './img/lighton.png';
+		cpf.request('["digitalWrite", 2 , 0]');
+	});
 	// Temperature
 	function toCelsius(value) {
 		var resistance = parseFloat((1023-value) * 10000 / value);
@@ -105,7 +131,7 @@
 	// cpf setup
 	function setup(){
 		if(cpf)
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 3,"PWM"]'); 
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 2,"OUTPUT"],["setPinMode", "digital", 3,"PWM"]'); 
 			//document.getElementById("demo").innerHTML += ret + "<br>";
 	}
 	
