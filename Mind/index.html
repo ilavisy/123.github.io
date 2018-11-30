@@ -92,6 +92,7 @@
 	//fan
 	function fan(value) {
 		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
+		document.getElementById("fanvalue").innerHTML = Number(value);
 	}
 	// Temperature
 	function toCelsius(value) {
