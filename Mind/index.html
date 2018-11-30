@@ -13,7 +13,7 @@
   <table width="200" align="center">
     <tr>
       <td><label>
-        <input type="radio" name="control method" value="bluete" id="controlmethod_0">
+        <input type="radio" name="control method" value="bluete" id="controlmethod_0" checked>
         藍芽</label></td>
 		<td><label>
         <input type="radio" name="control method" value="mind" id="controlmethod_1">
@@ -120,29 +120,34 @@
 				{mindstate="0";}
 			else if(mind1==0 && mind2==0 && mind3==1)
 				{mindstate="欠佳";
-				 document.getElementById("fanspeed").value=255;
-				 fan()
+				  if (document.getElementsByName("control method").value="mind")
+				  {document.getElementById("fanspeed").value=255;
+				 fan()}
 				}
 			else if(mind1==0 && mind2==1 && mind3==0)
-				{mindstate="尚可";
-				 document.getElementById("redvalue").innerHTML = 255;
+				{
+					mindstate="尚可";
+					 if (document.getElementsByName("control method").value="mind")
+					 { document.getElementById("redvalue").innerHTML = 255;
 				 document.getElementById("greenvalue").innerHTML = 0;
 				 document.getElementById("bluevalue").innerHTML = 0;
-				 changeColor();
+				 changeColor();}
 				}
 			else if(mind1==0 && mind2==1 && mind3==1)
 				{mindstate="不錯";
-				  document.getElementById("redvalue").innerHTML = 0;
+				 if (document.getElementsByName("control method").value="mind")
+				 {document.getElementById("redvalue").innerHTML = 0;
 				 document.getElementById("greenvalue").innerHTML = 0;
 				 document.getElementById("bluevalue").innerHTML = 255;
-				 changeColor();
+				 changeColor();}
 				}
 			else if(mind1==1 && mind2==0 && mind3==0)
 				{mindstate="非常好";
-				 document.getElementById("redvalue").innerHTML = 0;
+				 if (document.getElementsByName("control method").value="mind")
+				 {document.getElementById("redvalue").innerHTML = 0;
 				 document.getElementById("greenvalue").innerHTML = 255;
 				 document.getElementById("bluevalue").innerHTML = 0;
-				 changeColor();
+				 changeColor();}
 				}
 			document.getElementById("Mindstate").innerHTML = mindstate;
 			
