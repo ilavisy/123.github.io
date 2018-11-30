@@ -36,7 +36,7 @@
 					<td id="redvalue">0</td>
 					<td id="greenvalue">0</td>
 					<td id="bluevalue">0</td>
-					<td id="fan">0</td>
+					<td id="fanvalue">0</td>
 				</tr>
 				<tr>
 					<td><input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255"></td>
@@ -107,7 +107,7 @@
 	function fan(value) {
 		var Fanspeed = document.getElementById("fanspeed").value;
 		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
-		document.getElementById("fan").innerHTML = Fanspeed;
+		document.getElementById("fanvalue").innerHTML = Fanspeed;
 	}
 	// LED開燈
 	lighton.addEventListener('touchstart', function(event) {
