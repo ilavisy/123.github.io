@@ -19,7 +19,7 @@
         <input type="radio" name="control method" value="mind" id="controlmethod_1">
         腦波</label></td>
     
-      <td>版號 4</td>
+      <td>版號 0</td>
     </tr>
   </table>
 </div>
@@ -127,25 +127,25 @@
 			else if(mind1==0 && mind2==1 && mind3==0)
 				{
 					mindstate="尚可";
-					  document.getElementById("redvalue").innerHTML = 255;
-				 document.getElementById("greenvalue").innerHTML = 0;
-				 document.getElementById("bluevalue").innerHTML = 0;
+					  document.getElementById("rled").innerHTML = 255;
+				 document.getElementById("gled").innerHTML = 0;
+				 document.getElementById("bled").innerHTML = 0;
 				 changeColor();
 				}
 				
 			else if(mind1==0 && mind2==1 && mind3==1)
 				{mindstate="不錯";
-				 document.getElementById("redvalue").innerHTML = 0;
-				 document.getElementById("greenvalue").innerHTML = 0;
-				 document.getElementById("bluevalue").innerHTML = 255;
+				  document.getElementById("rled").innerHTML = 0;
+				 document.getElementById("gled").innerHTML = 0;
+				 document.getElementById("bled").innerHTML = 255;
 				 changeColor();
 				 }
 				}
 			else if(mind1==1 && mind2==0 && mind3==0)
 				{mindstate="非常好";
-				 document.getElementById("redvalue").innerHTML = 0;
-				 document.getElementById("greenvalue").innerHTML = 255;
-				 document.getElementById("bluevalue").innerHTML = 0;
+				 document.getElementById("rled").innerHTML = 0;
+				 document.getElementById("gled").innerHTML = 255;
+				 document.getElementById("bled").innerHTML = 0;
 				 changeColor();
 				 }
 				
