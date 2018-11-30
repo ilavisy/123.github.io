@@ -106,7 +106,7 @@
 	//fan
 	function fan(value) {
 		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
-		document.getElementById("fan").innerHTML = Number(value).value;
+		document.getElementById("fan").innerHTML = value.value;
 	}
 	// LED開燈
 	lighton.addEventListener('touchstart', function(event) {
