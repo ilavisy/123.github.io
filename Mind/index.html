@@ -120,34 +120,46 @@
 				{mindstate="0";}
 			else if(mind1==0 && mind2==0 && mind3==1)
 				{mindstate="欠佳";
-				  if (document.getElementsByName("control method").value="mind")
+				  if ($("input[name='control method']:checked").val()="mind")
 				  {document.getElementById("fanspeed").value=255;
 				 fan()}
+				 else {
+					 mindstate="欠佳!";
+				 }
 				}
 			else if(mind1==0 && mind2==1 && mind3==0)
 				{
 					mindstate="尚可";
-					 if (document.getElementsByName("control method").value="mind")
+					 if ($("input[name='control method']:checked").val()="mind")
 					 { document.getElementById("redvalue").innerHTML = 255;
 				 document.getElementById("greenvalue").innerHTML = 0;
 				 document.getElementById("bluevalue").innerHTML = 0;
 				 changeColor();}
+					else {
+					 mindstate="尚可!";
+				 }
 				}
 			else if(mind1==0 && mind2==1 && mind3==1)
 				{mindstate="不錯";
-				 if (document.getElementsByName("control method").value="mind")
+				 if ($("input[name='control method']:checked").val()="mind")
 				 {document.getElementById("redvalue").innerHTML = 0;
 				 document.getElementById("greenvalue").innerHTML = 0;
 				 document.getElementById("bluevalue").innerHTML = 255;
 				 changeColor();}
+				 else {
+					 mindstate="不錯!";
+				 }
 				}
 			else if(mind1==1 && mind2==0 && mind3==0)
 				{mindstate="非常好";
-				 if (document.getElementsByName("control method").value="mind")
+				 if ($("input[name='control method']:checked").val()="mind")
 				 {document.getElementById("redvalue").innerHTML = 0;
 				 document.getElementById("greenvalue").innerHTML = 255;
 				 document.getElementById("bluevalue").innerHTML = 0;
 				 changeColor();}
+				 else {
+					 mindstate="非常好!";
+				 }
 				}
 			document.getElementById("Mindstate").innerHTML = mindstate;
 			
