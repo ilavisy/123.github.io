@@ -105,9 +105,9 @@
 	}
 	//fan
 	function fan(value) {
-		var Fanspeed = document.getElementById("fanspeed").value;
+		
 		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
-		document.getElementById("fanvalue").innerHTML = Fanspeed;
+		document.getElementById("fanvalue").innerHTML = document.getElementById("fanspeed").value;
 	}
 	// LED開燈
 	lighton.addEventListener('touchstart', function(event) {
