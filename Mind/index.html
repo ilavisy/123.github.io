@@ -42,7 +42,7 @@
 					<td><input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255"></td>
 					<td><input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255"></td>
 					<td><input Onchange="changeColor();" type="range" id="bled" class="ledbar" value="0" min="0" max="255"></td>
-					<td><input Onchange="fan(this.value);" type="range" id="fanspeed" class="ledbar" value="0" min="0" max="255"></td>
+					<td><input Onchange="fan;" type="range" id="fanspeed" class="ledbar" value="0" min="0" max="255"></td>
 				</tr>
 			</table>
 			<span id="showcolor"></span>
@@ -104,10 +104,10 @@
 		
 	}
 	//fan
-	function fan(value) {
-		
-		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
-		document.getElementById("fanvalue").innerHTML = value.val.toString;
+	function fan() {
+		var speed = document.getElementById("fanspeed").value;
+		cpf.request('["analogWrite", 3, ' + Number(speed) + ']');
+		document.getElementById("fanvalue").innerHTML = speed;
 	}
 	// LED開燈
 	lighton.addEventListener('touchstart', function(event) {
