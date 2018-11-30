@@ -122,39 +122,35 @@
 				{mindstate="欠佳";
 				  document.getElementById("fanspeed").value=255;
 				 fan()
-				  document.getElementById("rled").innerHTML = 255;
-				 document.getElementById("gled").innerHTML = 0;
-				 document.getElementById("bled").innerHTML = 0;
-				 changeColor();
+				  if(cpf){
+			cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+		}
 				 }
 				
 			else if(mind1==0 && mind2==1 && mind3==0)
 				{
 					mindstate="尚可";
-					  document.getElementById("rled").innerHTML = 255;
-				 document.getElementById("gled").innerHTML = 0;
-				 document.getElementById("bled").innerHTML = 0;
-				 changeColor();
+					  if(cpf){
+			cpf.setChainableLed("0," + 255 + "," + 0 + "," + 0 + ";");
+		}
 					document.getElementById("fanspeed").value=0;
 				 fan()
 				}
 				
 			else if(mind1==0 && mind2==1 && mind3==1)
 				{mindstate="不錯";
-				  document.getElementById("rled").innerHTML = 0;
-				 document.getElementById("gled").innerHTML = 0;
-				 document.getElementById("bled").innerHTML = 255;
-				 changeColor();
+				  if(cpf){
+			cpf.setChainableLed("0," + 0 + "," + 0 + "," + 255 + ";");
+		}
 				 document.getElementById("fanspeed").value=0;
 				 fan()
 				 }
 				}
 			else if(mind1==1 && mind2==0 && mind3==0)
 				{mindstate="非常好";
-				 document.getElementById("rled").innerHTML = 0;
-				 document.getElementById("gled").innerHTML = 255;
-				 document.getElementById("bled").innerHTML = 0;
-				 changeColor();
+				 if(cpf){
+			cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";");
+		}
 				 document.getElementById("fanspeed").value=0;
 				 fan()
 				 }
