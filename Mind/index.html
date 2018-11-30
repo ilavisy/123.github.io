@@ -86,9 +86,9 @@
 		
 	}
 	//fan
-	function fan(value) {
-		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
-	}
+	//function fan(value) {
+	//	cpf.request('["analogWrite", 3, ' + Number(value) + ']');
+	//}
 	// Temperature
 	function toCelsius(value) {
 		var resistance = parseFloat((1023-value) * 10000 / value);
