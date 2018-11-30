@@ -21,6 +21,11 @@
     
       <td>版號 0</td>
     </tr>
+	  <tr>
+	  <td id="mid1">	Q	  </td>
+      <td id="mid2">	Q	  </td>
+		  <td id="mid3">	Q	  </td>
+	  </tr>
   </table>
 </div>
 <div align="center"><table style="margin: 0 auto; margin-top: 10px;"><tr><td>專注等級</td><td id="Mindstate">0</td></tr></table></div>
@@ -116,7 +121,7 @@
 			celsius = toCelsius(tempdata);	
 			document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
-			if (mind1==0 && mind2==0 && mind3==0)
+			/*if (mind1==0 && mind2==0 && mind3==0)
 				{mindstate="0";}
 			else if(mind1==0 && mind2==0 && mind3==1)
 				{mindstate="欠佳";
@@ -149,12 +154,18 @@
 			else if(mind1==1 && mind2==0 && mind3==0)
 				{mindstate="非常好";
 				 if(cpf){
-			cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";");
-		}
+			cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";");}
 				 document.getElementById("fanspeed").value=0;
 				 fan()
-				 }
-				
+				 }*/
+			document.getElementById("mid1").innerHTML = mind1 ;
+				document.getElementById("mid2").innerHTML = mind2;
+				document.getElementById("mid3").innerHTML = mind3;
+				if(mind1==1 && mind2==0 && mind3==0)
+				{mindstate="非常好";
+				 if(cpf){
+			cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";")
+					 ;}
 			document.getElementById("Mindstate").innerHTML = mindstate;
 			
 		
