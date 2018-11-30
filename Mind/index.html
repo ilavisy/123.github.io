@@ -106,8 +106,9 @@
 	//fan
 	function fan() {
 		var Fanspeed = document.getElementById("fanspeed").value;
-		cpf.request('["analogWrite", 3, ' + Fanspeed + ']');
 		document.getElementById("fanvalue").innerHTML = Fanspeed;
+		cpf.request('["analogWrite", 3, ' + Fanspeed + ']');
+		
 	}
 	// LED開燈
 	lighton.addEventListener('touchstart', function(event) {
