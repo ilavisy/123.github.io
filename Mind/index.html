@@ -19,7 +19,7 @@
         <input type="radio" name="control method" value="mind" id="controlmethod_1">
         腦波</label></td>
     
-      <td>版號 0</td>
+      <td>版號 1</td>
     </tr>
   </table>
 </div>
@@ -122,6 +122,10 @@
 				{mindstate="欠佳";
 				  document.getElementById("fanspeed").value=255;
 				 fan()
+				  document.getElementById("rled").innerHTML = 255;
+				 document.getElementById("gled").innerHTML = 0;
+				 document.getElementById("bled").innerHTML = 0;
+				 changeColor();
 				 }
 				
 			else if(mind1==0 && mind2==1 && mind3==0)
@@ -131,6 +135,8 @@
 				 document.getElementById("gled").innerHTML = 0;
 				 document.getElementById("bled").innerHTML = 0;
 				 changeColor();
+					document.getElementById("fanspeed").value=0;
+				 fan()
 				}
 				
 			else if(mind1==0 && mind2==1 && mind3==1)
@@ -139,6 +145,8 @@
 				 document.getElementById("gled").innerHTML = 0;
 				 document.getElementById("bled").innerHTML = 255;
 				 changeColor();
+				 document.getElementById("fanspeed").value=0;
+				 fan()
 				 }
 				}
 			else if(mind1==1 && mind2==0 && mind3==0)
@@ -147,6 +155,8 @@
 				 document.getElementById("gled").innerHTML = 255;
 				 document.getElementById("bled").innerHTML = 0;
 				 changeColor();
+				 document.getElementById("fanspeed").value=0;
+				 fan()
 				 }
 				
 			document.getElementById("Mindstate").innerHTML = mindstate;
