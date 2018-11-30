@@ -91,7 +91,7 @@
 	}
 	//fan
 	function fan(value) {
-		cpf.request('["analogWrite", 3, ' + Number(100) + ']');
+		cpf.request('["analogWrite", 3, ' + Number(value) + ']');
 	}
 	// Temperature
 	function toCelsius(value) {
