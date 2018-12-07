@@ -1,6 +1,6 @@
 
 
-<script>
+
 	var programstate;
 	var methodstate;
 	
@@ -130,5 +130,3 @@
 			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 2,"OUTPUT"],["setPinMode", "digital", 3,"PWM"],["setPinMode", "digital", 4,"INPUT"],["setPinMode", "digital", 5,"INPUT"],["setPinMode", "digital", 6,"INPUT"]'); }
 			
 	}
-	
-</script>
