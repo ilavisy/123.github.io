@@ -20,6 +20,7 @@ html {
 	text-align: center;
 }
 
+
 /******** Analog ********/
 
 #analog {
@@ -113,6 +114,7 @@ input[type=range]::-webkit-slider-runnable-track {
 	#content {
 		padding: 0px;
 	}
+	
 	#analog {
 		padding: 10px ;
 	}
