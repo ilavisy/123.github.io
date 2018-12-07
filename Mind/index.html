@@ -186,11 +186,9 @@
 			document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			
-			document.getElementById("mid1").innerHTML = mind1;
-			document.getElementById("mid2").innerHTML = mind2;
-			document.getElementById("mid3").innerHTML = mind3;
+			
 		
-		Mind()
+			Mind()
 		setTimeout(loop, 100);
 	}
 	
@@ -246,12 +244,18 @@
 	if(mind1==0 && mind2==0 && mind3==0)
 					{
 						mindstate="0";
+						if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+					 }
 					 }
 		if(mind1==0 && mind2==0 && mind3==1)
 					{
 						mindstate="欠佳";
 					 if(cpf)
 					 {
+						 cpf.request('["analogWrite", 3, ' + 255 + ']');
 						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
 					 }
 				
@@ -261,7 +265,8 @@
 						mindstate="尚可";
 					 if(cpf)
 					 {
-						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 255 + "," + 0 + "," + 0 + ";");
 					 }
 				
 					}
@@ -270,7 +275,8 @@
 						mindstate="不錯";	
 					 if(cpf)
 					 {
-						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 255 + ";");
 					 }
 				
 					}
@@ -279,6 +285,7 @@
 						mindstate="非常好";
 					if(cpf)
 				   	{
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
 						 cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";");
 					 }
 					 
