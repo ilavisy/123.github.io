@@ -22,16 +22,16 @@
 	  </tr>
     <tr>
 	  <td>操作項目</td>
-      <td><button type="button" id='pg1' value="op1" onclick="changeop(this.value)">RGB & FAN</button></td>
-	  <td><button type="button" id='pg2' value="op2" onclick="changeop(this.value)">Car</button></td>
+      <td><button type="button" id="pg1" value="op1" onclick="changeop(this.value)">RGB & FAN</button></td>
+	  <td><button type="button" id="pg2" value="op2" onclick="changeop(this.value)">Car</button></td>
 		<td></td>
 		
     </tr>
 	<tr>
 	  <td>操作方法</td>
-	  <td><button type="button" id='method1' value="manual" onclick="changeme(this.value)">Manual</button></td>
-	  <td><button type="button" id='method2' value="mind" onclick="changeme(this.value)">Mind</button></td>
-	  <td><button type="button" id='method3' value="demo" onclick="changeme(this.value)">Demo</button></td>
+	  <td><button type="button" id="method1" value="manual" onclick="changeme(this.value)">Manual</button></td>
+	  <td><button type="button" id="method2" value="mind" onclick="changeme(this.value)">Mind</button></td>
+	  <td><button type="button" id="method3" value="demo" onclick="changeme(this.value)">Demo</button></td>
 	</tr>
 	  <tr><td></td><td><h3>專注等級</h3></td><td><h3 id="Mindstate">0</h3></td><td></td>
 	  </tr>
@@ -129,22 +129,20 @@
 	var mindstate;
 	setup();
 	//inistate
-/*	document.getElementById("pg1").style.color = "blue";
-	document.getElementById("pg1").style.backgroundColor="grey";
-	document.getElementById("method1").style.color = "blue";
-	document.getElementById("method1").style.backgroundColor="grey";*/
+changeop('op1');
+changeme('method1');	
     //prostate
 	function changeop(opvalue)
 	{	if(opvalue='op1')
 		{document.getElementById("pg1").style.color = "blue";
 		document.getElementById("pg1").style.backgroundColor="grey";
 		document.getElementById("pg2").style.color = "black";
-		document.getElementById("pg2").style.backgroundColor="white";}
+		document.getElementById("pg2").style.backgroundColor="initial";}
 		else if(opvalue='op2')
 		{document.getElementById("pg2").style.color = "blue";
 		document.getElementById("pg2").style.backgroundColor="grey";
 		document.getElementById("pg1").style.color = "black";
-		document.getElementById("pg1").style.backgroundColor="white";}
+		document.getElementById("pg1").style.backgroundColor="initial";}
 	 
 	}
 	//methodstate
@@ -153,23 +151,23 @@
 		{document.getElementById("method1").style.color = "blue";
 		document.getElementById("method1").style.backgroundColor="grey";
 		document.getElementById("method2").style.color = "black";
-		document.getElementById("method2").style.backgroundColor="white";
+		document.getElementById("method2").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
-		document.getElementById("method3").style.backgroundColor="white";}
+		document.getElementById("method3").style.backgroundColor="initial";}
 		else if(mevalue='mind')
 		{document.getElementById("method2").style.color = "blue";
 		document.getElementById("method2").style.backgroundColor="grey";
 		document.getElementById("method1").style.color = "black";
-		document.getElementById("method1").style.backgroundColor="white";
+		document.getElementById("method1").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
-		document.getElementById("method3").style.backgroundColor="white";}
+		document.getElementById("method3").style.backgroundColor="initial";}
 	 else if(mevalue='demo')
 		{document.getElementById("method3").style.color = "blue";
 		document.getElementById("method3").style.backgroundColor="grey";
 		document.getElementById("method2").style.color = "black";
-		document.getElementById("method2").style.backgroundColor="white";
+		document.getElementById("method2").style.backgroundColor="initial";
 		document.getElementById("method1").style.color = "black";
-		document.getElementById("method1").style.backgroundColor="white";}
+		document.getElementById("method1").style.backgroundColor="initial";}
 	}
 
 	// Analog
