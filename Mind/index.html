@@ -170,7 +170,25 @@ changeme('method1');
 		document.getElementById("method2").style.color = "black";
 		document.getElementById("method2").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
-		document.getElementById("method3").style.backgroundColor="initial";}
+		document.getElementById("method3").style.backgroundColor="initial";
+		if(pgstate=='op1')
+			{
+				if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+					 }
+			}
+		 else if(pgstate=='op2')
+			{
+				if(cpf)
+					 {
+						 cpf.request('["digitalWrite", 9 , 0]');
+						 cpf.request('["digitalWrite", 10 , 0]');
+						 cpf.request('["digitalWrite", 11 , 0]');
+					 }
+			}
+		}
 		else if(mevalue=='mind')
 		{document.getElementById("method2").style.color = "blue";
 		document.getElementById("method2").style.backgroundColor="grey";
@@ -339,6 +357,7 @@ changeme('method1');
 				   	{
 						 cpf.request('["analogWrite", 3, ' + 0 + ']');
 						 cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";");
+						
 					 }
 					 
 					}
