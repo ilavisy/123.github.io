@@ -1,71 +1,274 @@
 <!DOCTYPE html>
 <head>
-<title>Easy Control</title>
+<title>Easy or Mind Control</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
+<html>
 <body>
-<font id="title">Easy Control</font><p><br>
-
+<font id="title">Easy or Mind Control</font><br>
+	
+<div class="col-sm-12  col-xs-12">
+  <table width="300" align="center">
+	  <tr>
+		  <td></td>
+		  <td>版號 </td>
+	      <td>2</td>
+		  <td></td>
+	  </tr>
+    <tr>
+	  <td>操作項目</td>
+      <td><button type="button" id="pg1" onclick="changeop('op1')">RGB & FAN</button></td>
+	  <td><button type="button" id="pg2" onclick="changeop('op2')">Car</button></td>
+		<td></td>
+		
+    </tr>
+	<tr>
+	  <td>操作方法</td>
+	  <td><button type="button" id="method1" onclick="changeme('manual')">Manual</button></td>
+	  <td><button type="button" id="method2" onclick="changeme('mind')">Mind</button></td>
+	  <td><button type="button" id="method3" onclick="changeme('demo')">Demo</button></td>
+	</tr>
+	  <tr><td></td><td><h3>專注等級</h3></td><td><h3 id="Mindstate">0</h3></td><td></td></tr> 
+	  
+	 
+  </table>
+	
+</div>
+	
 <div id="content" class="row">
-	<div class="col-sm-12  col-xs-12">
-		<div id="analog" class="col-sm-6 col-xs-12">
+  <div class="col-sm-12  col-xs-12">
+      <div id="analog" class="col-sm-6 col-xs-12">
 			<div class="analogclass">
 				<img class="analogsensor" src="img/light.png" />
 				<span class="analogvalue" id="lightvalue">none</span><br>
-			</div>
-			<p>
+	    </div>
+			
 			<div class="analogclass">
 				<img class="analogsensor" src="img/temp.png" />
 				<span class="analogvalue" id="temperaturevalue">none</span>
 			</div>
-		</div>
-		<div id="rgb" class="col-sm-6 col-xs-12">
-			<img class="rgbled" src="img/rgb.png" />
+	  </div>
+      <div id="rgb" class="col-sm-6 col-xs-12">
+			
+			
 			<table style="margin: 0 auto; margin-top: 10px;">
 				<tr style="text-align: center;">
+					<td><img class="rgbled" src="img/rgb.png" /></td>
+					<td><img class="rgbled" src="img/rgb.png" /></td>
+					<td><img class="rgbled" src="img/rgb.png" /></td>
+					<td><img class="rgbled" src="img/fan.png" style="background-color:black;"/></td>
+				</tr>
+				<tr style="text-align: center;">
 					<td><font color="red"><b>Red</b></font></td>
-					<td><font color="green"><b>green</b></font></td>
-					<td><font color="blue"><b>blue</b></font></td>
+					<td><font color="green"><b>Green</b></font></td>
+					<td><font color="blue"><b>Blue</b></font></td>
+					<td><font color="dark"><b>Fan</b></font></td>
 				</tr>
 				<tr style="text-align: center;">
 					<td id="redvalue">0</td>
 					<td id="greenvalue">0</td>
 					<td id="bluevalue">0</td>
+					<td id="fanvalue">0</td>
+					
 				</tr>
+				
 				<tr>
+					
 					<td><input Onchange="changeColor();" type="range" id="rled" class="ledbar" value="0" min="0" max="255"></td>
-					<td><input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255"></td>
+				  <td><input Onchange="changeColor();" type="range" id="gled" class="ledbar" value="0" min="0" max="255"></td>
 					<td><input Onchange="changeColor();" type="range" id="bled" class="ledbar" value="0" min="0" max="255"></td>
+					<td><input Onchange="fan();" type="range" id="fanspeed" class="ledbar" value="0" min="0" max="255"></td>
 				</tr>
-			</table>
+	
+	    </table>
 			<span id="showcolor"></span>
+	  </div>
+    <div id="light" class="col-sm-12 col-xs-12">
+			<div>
+			  <h2 style="margin-top: 5px;">Lighting</h2>
+	    </div>
+	 		 <div>
+				 <img src="./img/bulb.png" id="bulb" class="sensors" style="width: 10%; top: 5%;background-color:black;">
+		    </div>
+		 <div>
+					<img src="./img/lighton.png" class="lighting" id="lighton" style="width: 15%; top: 10%;">
+				<img src="./img/light_off.png" class="lighting" id="lightoff" style="width: 15%; top: 10%;">
 		</div>
-	</div>
+				
+		  
+    </div>
+	  <div id="carc" class="col-sm-12  col-xs-12">
+	  <div><button type="button"  onclick="carmanual('G')">前進</button></div>
+	  <div><button type="button"  onclick="carmanual('L')">靠左</button><button type="button"  onclick="carmanual('Q')">停止</button>  <button type="button"  onclick="carmanual('R')">靠右</button></div>
+	  <div><button type="button" onclick="carmanual('B')">後退</button></div>
+	  
+  </div>
+  </div>
 </div>
+	
+
+
+	
+	
 
 <script>
 	
+	var pgstate;
+	var mhstate;
 	var lightdata;
 	var tempdata;
 	var celsius;
+	var lighton = document.getElementById("lighton");
+	var lightoff = document.getElementById("lightoff");
+	var mind1;
+	var mind2;
+	var mind3;
+	var mindstate;
 	setup();
+	//inistate
+changeop('op1');
+changeme('manual');	
+    //prostate
+	function changeop(opvalue)
+	{	
+		if(opvalue=='op1')
+		{document.getElementById("pg1").style.color = "blue";
+		document.getElementById("pg1").style.backgroundColor="grey";
+		document.getElementById("pg2").style.color = "black";
+		document.getElementById("pg2").style.backgroundColor="initial";
+		 
+		 document.getElementById("analog").style.display= "initial";
+		 document.getElementById("rgb").style.display= "initial";
+		 document.getElementById("light").style.display= "initial";
+		 document.getElementById("carc").style.display="none"; 
+		 
+		}
+		else if(opvalue=='op2')
+		{document.getElementById("pg2").style.color = "blue";
+		document.getElementById("pg2").style.backgroundColor="grey";
+		document.getElementById("pg1").style.color = "black";
+		document.getElementById("pg1").style.backgroundColor="initial";
+		 
+		 document.getElementById("analog").style.display="none";
+		 document.getElementById("rgb").style.display="none";
+		 document.getElementById("light").style.display="none";
+		 document.getElementById("carc").style.display= "initial";
+		 
+		}
+	 pgstate=opvalue;
+		stateout();
+	}
+	//methodstate
+    function changeme(mevalue)
+	{
+		if(mevalue=='manual')
+		{document.getElementById("method1").style.color = "blue";
+		document.getElementById("method1").style.backgroundColor="grey";
+		document.getElementById("method2").style.color = "black";
+		document.getElementById("method2").style.backgroundColor="initial";
+		document.getElementById("method3").style.color = "black";
+		document.getElementById("method3").style.backgroundColor="initial";
+		if(pgstate=='op1')
+			{
+				if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+					 }
+			}
+		 else if(pgstate=='op2')
+			{
+				if(cpf)
+					 {
+						 cpf.request('["digitalWrite", 9 , 0]');
+						 cpf.request('["digitalWrite", 10 , 0]');
+						 cpf.request('["digitalWrite", 11 , 0]');
+					 }
+			}
+		}
+		else if(mevalue=='mind')
+		{document.getElementById("method2").style.color = "blue";
+		document.getElementById("method2").style.backgroundColor="grey";
+		document.getElementById("method1").style.color = "black";
+		document.getElementById("method1").style.backgroundColor="initial";
+		document.getElementById("method3").style.color = "black";
+		document.getElementById("method3").style.backgroundColor="initial";}
+	    else if(mevalue=='demo')
+		{document.getElementById("method3").style.color = "blue";
+		document.getElementById("method3").style.backgroundColor="grey";
+		document.getElementById("method2").style.color = "black";
+		document.getElementById("method2").style.backgroundColor="initial";
+		document.getElementById("method1").style.color = "black";
+		document.getElementById("method1").style.backgroundColor="initial";}
+		mhstate=mevalue;
+		stateout();
+	}
+//
+	function stateout()
+	{
+		if(cpf){
+				if(pgstate=='op1' && mhstate=='demo')
+					{	cpf.request('["digitalWrite", 12 , 1]');
+						cpf.request('["digitalWrite", 13 , 1]');
+						MindRGBFan();
+					}
+					if(pgstate=='op1' && mhstate=='mind')
+					{
+						cpf.request('["digitalWrite", 12 , 0]');
+						cpf.request('["digitalWrite", 13 , 0]');
+						MindRGBFan();
+					}
+					if(pgstate=='op1' && mhstate=='manual')
+					{
+						cpf.request('["digitalWrite", 12 , 0]');
+						cpf.request('["digitalWrite", 13 , 0]');
+
+					}
+					if(pgstate=='op2' && mhstate=='demo')
+					{
+						cpf.request('["digitalWrite", 12 , 1]');
+						cpf.request('["digitalWrite", 13 , 0]');
+
+					}
+					if(pgstate=='op2' && mhstate=='mind')
+					{
+						cpf.request('["digitalWrite", 12 , 0]');
+						cpf.request('["digitalWrite", 13 , 1]');
+					}
+					if(pgstate=='op2' && mhstate=='manual')
+					{
+						cpf.request('["digitalWrite", 12 , 0]');
+						cpf.request('["digitalWrite", 13 , 0]');
+					}
+		}
+	}
 	// Analog
 	function loop() {
 		if(cpf){
 	
 			lightdata = cpf.get("light sensor");
 			tempdata = cpf.get("temperature sensor");
+			mind1=cpf.get("d4");
+			mind2=cpf.get("d5");
+			mind3=cpf.get("d6");
+		}
 			celsius = toCelsius(tempdata);	
 			document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
 			
-		}
+			readMind();
+			
+			
+			
+			
+		
 		setTimeout(loop, 1000);
 	}
+	
 	loop();
 	
 	// RGB
@@ -86,6 +289,31 @@
 		
 	}
 	
+	//fan
+	function fan() {
+		var Fanspeed = document.getElementById("fanspeed").value;
+		document.getElementById("fanvalue").innerHTML = Fanspeed;
+		if(cpf){
+		cpf.request('["analogWrite", 3, ' + Fanspeed + ']');
+		}
+		
+	}
+	// LED開燈
+	lighton.addEventListener('touchstart', function(event) {
+		lighton.src= './img/light_on.png';
+		lightoff.src= './img/lightoff.png';
+		if(cpf){
+		cpf.request('["digitalWrite", 2 , 1]');
+		}
+	});
+	// LED關燈
+	lightoff.addEventListener('touchstart', function(event) {
+		lightoff.src= './img/light_off.png';
+		lighton.src= './img/lighton.png';
+		if(cpf){
+		cpf.request('["digitalWrite", 2 , 0]');
+		}
+	});
 	// Temperature
 	function toCelsius(value) {
 		var resistance = parseFloat((1023-value) * 10000 / value);
@@ -93,14 +321,161 @@
 		
 		return temperature.toFixed(2);
 	}
-	
+	//Mind
+    function MindRGBFan()
+{
+	if(mindstate=="0")
+					{
+						
+						if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+					 }
+					 }
+		if(mindstate=="欠佳")
+					{
+						
+					 if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 255 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+					 }
+				
+					}
+		if(mindstate=="尚可")
+					{
+						
+					 if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 255 + "," + 0 + "," + 0 + ";");
+					 }
+				
+					}
+		if(mindstate=="不錯")
+					{
+							
+					 if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 255 + ";");
+					 }
+				
+					}
+		if(mindstate=="非常好")
+					{
+						
+					
+					if(cpf)
+				   	{
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 255 + "," + 0 + ";");
+						
+					 }
+					 
+					}
+		
+		
+}
+    function readMind()
+{
+	if(mind1==0 && mind2==0 && mind3==0)
+					{
+						mindstate="0";
+					
+					 }
+		else if(mind1==0 && mind2==0 && mind3==1)
+					{
+						mindstate="欠佳";
+					 
+				
+					}
+		else if(mind1==0 && mind2==1 && mind3==0)
+					{
+						mindstate="尚可";
+					 
+					}
+		else if(mind1==0 && mind2==1 && mind3==1)
+					{
+						mindstate="不錯";	
+					 
+				
+					}
+		else if(mind1==1 && mind2==0 && mind3==0)
+					{
+						mindstate="非常好";
+					
+					 
+					}
+	    else 
+					{
+						mindstate="0";
+						
+					 }
+		
+		document.getElementById("Mindstate").innerHTML = mindstate;
+}
+	//manual car
+	function carmanual(carvalue)
+	{
+		if(cpf){
+			if(carvalue=='Q')
+				{
+					cpf.request('["digitalWrite", 9 , 0]');
+					cpf.request('["digitalWrite", 10 , 0]');
+					cpf.request('["digitalWrite", 11 , 0]');
+				}
+			else if(carvalue=='R')
+				{
+					cpf.request('["digitalWrite", 9 , 0]');
+					cpf.request('["digitalWrite", 10 , 0]');
+					cpf.request('["digitalWrite", 11 , 1]');
+				}
+			else if(carvalue=='L')
+				{
+					cpf.request('["digitalWrite", 9 , 0]');
+					cpf.request('["digitalWrite", 10 , 1]');
+					cpf.request('["digitalWrite", 11 , 0]');
+				}
+			else if(carvalue=='G')
+				{
+					cpf.request('["digitalWrite", 9 , 0]');
+					cpf.request('["digitalWrite", 10 , 1]');
+					cpf.request('["digitalWrite", 11 , 1]');
+				}
+			else if(carvalue=='B')
+				{
+					cpf.request('["digitalWrite", 9 , 1]');
+					cpf.request('["digitalWrite", 10 , 0]');
+					cpf.request('["digitalWrite", 11 , 0]');
+				}
+			else
+				{
+					cpf.request('["digitalWrite", 9 , 0]');
+					cpf.request('["digitalWrite", 10 , 0]');
+					cpf.request('["digitalWrite", 11 , 0]');
+				}
+		}
+		
+	}
 	// cpf setup
 	function setup(){
-		if(cpf)
-			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]'); 
-			//document.getElementById("demo").innerHTML += ret + "<br>";
-	}
 	
-</script>
+	if(cpf){
+			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 2,"OUTPUT"],["setPinMode", "digital", 3,"PWM"],["setPinMode", "digital", 4,"INPUT"],["setPinMode", "digital", 5,"INPUT"],["setPinMode", "digital", 6,"INPUT"]'); 
+		}
+	}
+		
+			
+	
+	/*//if(cpf){
+//			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 2,"OUTPUT"],["setPinMode", "digital", 3,"PWM"],["setPinMode", "digital", 4,"INPUT"],["setPinMode", "digital", 5,"INPUT"],["setPinMode", "digital", 6,"INPUT"],["setPinMode", "digital", 9,"OUTPUT"],["setPinMode", "digital", 10,"OUTPUT"],["setPinMode", "digital", 11,"OUTPUT"],["setPinMode", "digital", 12,"OUTPUT"],["setPinMode", "digital", 13,"OUTPUT"]'); }*/
+</script>	
+
+
+
+
+
 </body>
 </html>
