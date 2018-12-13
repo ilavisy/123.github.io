@@ -16,7 +16,7 @@
 	  <tr>
 		  <td></td>
 		  <td>版號 </td>
-	      <td>1</td>
+	      <td>2</td>
 		  <td></td>
 	  </tr>
     <tr>
@@ -157,7 +157,7 @@ changeme('manual');
 		 
 		}
 	 pgstate=opvalue;
-		stateout();
+		
 	}
 	//methodstate
     function changeme(mevalue)
@@ -202,13 +202,20 @@ changeme('manual');
 		document.getElementById("method1").style.color = "black";
 		document.getElementById("method1").style.backgroundColor="initial";}
 		mhstate=mevalue;
-		stateout();
+		
 	}
 //
-	function stateout()
-	{
+	
+	// Analog
+	function loop() {
 		if(cpf){
-				if(pgstate=='op1' && mhstate=='demo')
+	
+			lightdata = cpf.get("light sensor");
+			tempdata = cpf.get("temperature sensor");
+			mind1=cpf.get("d4");
+			mind2=cpf.get("d5");
+			mind3=cpf.get("d6");
+			if(pgstate=='op1' && mhstate=='demo')
 					{	cpf.request('["digitalWrite", 12 , 1]');
 						cpf.request('["digitalWrite", 13 , 1]');
 						MindRGBFan();
@@ -241,17 +248,6 @@ changeme('manual');
 						cpf.request('["digitalWrite", 12 , 0]');
 						cpf.request('["digitalWrite", 13 , 0]');
 					}
-		}
-	}
-	// Analog
-	function loop() {
-		if(cpf){
-	
-			lightdata = cpf.get("light sensor");
-			tempdata = cpf.get("temperature sensor");
-			mind1=cpf.get("d4");
-			mind2=cpf.get("d5");
-			mind3=cpf.get("d6");
 		}
 			celsius = toCelsius(tempdata);	
 			document.getElementById("lightvalue").innerHTML = lightdata;
