@@ -16,7 +16,7 @@
 	  <tr>
 		  <td></td>
 		  <td>版號 </td>
-	      <td>3</td>
+	      <td>2</td>
 		  <td></td>
 	  </tr>
     <tr>
@@ -209,9 +209,9 @@ changeme('manual');
 	// Analog
 	function loop() {
 		if(cpf){
-	
-			lightdata = cpf.get("light sensor");
-			tempdata = cpf.get("temperature sensor");
+			if(opvalue=='op1')
+			{lightdata = cpf.get("light sensor");
+			tempdata = cpf.get("temperature sensor");}
 			mind1=cpf.get("d4");
 			mind2=cpf.get("d5");
 			mind3=cpf.get("d6");
