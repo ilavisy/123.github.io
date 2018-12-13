@@ -16,7 +16,7 @@
 	  <tr>
 		  <td></td>
 		  <td>版號 </td>
-	      <td>1</td>
+	      <td>3</td>
 		  <td></td>
 	  </tr>
     <tr>
@@ -293,20 +293,26 @@ changeme('manual');
 	function fan() {
 		var Fanspeed = document.getElementById("fanspeed").value;
 		document.getElementById("fanvalue").innerHTML = Fanspeed;
+		if(cpf){
 		cpf.request('["analogWrite", 3, ' + Fanspeed + ']');
+		}
 		
 	}
 	// LED開燈
 	lighton.addEventListener('touchstart', function(event) {
 		lighton.src= './img/light_on.png';
 		lightoff.src= './img/lightoff.png';
+		if(cpf){
 		cpf.request('["digitalWrite", 2 , 1]');
+		}
 	});
 	// LED關燈
 	lightoff.addEventListener('touchstart', function(event) {
 		lightoff.src= './img/light_off.png';
 		lighton.src= './img/lighton.png';
+		if(cpf){
 		cpf.request('["digitalWrite", 2 , 0]');
+		}
 	});
 	// Temperature
 	function toCelsius(value) {
