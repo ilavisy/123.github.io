@@ -229,7 +229,6 @@ changeme('manual');
 					{
 						cpf.request('["digitalWrite", 12 , 0]');
 						cpf.request('["digitalWrite", 13 , 0]');
-						MindRGBFan();
 					}
 					if(mhstate=='manual')
 					{
@@ -287,7 +286,11 @@ changeme('manual');
 			
 			readMind();
 			
-			
+			if(pgstate=='op1' && (mhstate=='mind' || mhstate=='demo')
+					{
+					
+						MindRGBFan();
+					}	
 			
 			
 		
