@@ -252,22 +252,38 @@ changeme('manual');
 	}
 	
 	// Analog
-	function loop() {
+	function loopAn() {
 		if(cpf){
-			if(pgstate=='op1')
-					{
+			
 			lightdata = cpf.get("light sensor");
 			tempdata = cpf.get("temperature sensor");
-					}
+								
+		}
+			celsius = toCelsius(tempdata);	
+			document.getElementById("lightvalue").innerHTML = lightdata;
+			document.getElementById("temperaturevalue").innerHTML = celsius;
+			
+			
+			
+			
+			
+		
+		setTimeout(loopAn, 3000);
+	}
+	
+	loopAn();
+	
+	function loop() {
+		if(cpf){
+			
+					
 			mind1=cpf.get("d4");
 			mind2=cpf.get("d5");
 			mind3=cpf.get("d6");
 			
 					
 		}
-			celsius = toCelsius(tempdata);	
-			document.getElementById("lightvalue").innerHTML = lightdata;
-			document.getElementById("temperaturevalue").innerHTML = celsius;
+			
 			
 			readMind();
 			
@@ -275,7 +291,7 @@ changeme('manual');
 			
 			
 		
-		setTimeout(loop, 3000);
+		setTimeout(loop, 100);
 	}
 	
 	loop();
