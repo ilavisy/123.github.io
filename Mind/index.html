@@ -16,7 +16,7 @@
 	  <tr>
 		  <td></td>
 		  <td>版號 </td>
-	      <td>0</td>
+	      <td>00</td>
 		  <td></td>
 	  </tr>
     <tr>
@@ -158,8 +158,16 @@ changeme('manual');
 		 document.getElementById("carc").style.display= "initial";
 		 
 		}
+		if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+						 cpf.request('["digitalWrite", 9 , 0]');
+						 cpf.request('["digitalWrite", 10 , 0]');
+						 cpf.request('["digitalWrite", 11 , 0]');
+					 }
 	 pgstate=opvalue;
-		
+		cpftouno()
 	}
 	//methodstate
     function changeme(mevalue)
@@ -171,23 +179,10 @@ changeme('manual');
 		document.getElementById("method2").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
 		document.getElementById("method3").style.backgroundColor="initial";
-		if(pgstate=='op1')
-			{
-				if(cpf)
-					 {
-						 cpf.request('["analogWrite", 3, ' + 0 + ']');
-						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
-					 }
-			}
-		 else if(pgstate=='op2')
-			{
-				if(cpf)
-					 {
-						 cpf.request('["digitalWrite", 9 , 0]');
-						 cpf.request('["digitalWrite", 10 , 0]');
-						 cpf.request('["digitalWrite", 11 , 0]');
-					 }
-			}
+		
+				
+		
+		
 		}
 		else if(mevalue=='mind')
 		{document.getElementById("method2").style.color = "blue";
@@ -195,28 +190,37 @@ changeme('manual');
 		document.getElementById("method1").style.color = "black";
 		document.getElementById("method1").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
-		document.getElementById("method3").style.backgroundColor="initial";}
+		document.getElementById("method3").style.backgroundColor="initial";
+	
+		
+		}
 	    else if(mevalue=='demo')
 		{document.getElementById("method3").style.color = "blue";
 		document.getElementById("method3").style.backgroundColor="grey";
 		document.getElementById("method2").style.color = "black";
 		document.getElementById("method2").style.backgroundColor="initial";
 		document.getElementById("method1").style.color = "black";
-		document.getElementById("method1").style.backgroundColor="initial";}
+		document.getElementById("method1").style.backgroundColor="initial";
+		 
+		
+		}
+		if(cpf)
+					 {
+						 cpf.request('["analogWrite", 3, ' + 0 + ']');
+						 cpf.setChainableLed("0," + 0 + "," + 0 + "," + 0 + ";");
+						 cpf.request('["digitalWrite", 9 , 0]');
+						 cpf.request('["digitalWrite", 10 , 0]');
+						 cpf.request('["digitalWrite", 11 , 0]');
+					 }
 		mhstate=mevalue;
+		cpftouno()
 		
 	}
 //
-	
-	// Analog
-	function loop() {
+	function cpftouno()
+	{
 		if(cpf){
-			lightdata = cpf.get("light sensor");
-			tempdata = cpf.get("temperature sensor");
-			mind1=cpf.get("d4");
-			mind2=cpf.get("d5");
-			mind3=cpf.get("d6");
-			if(pgstate=='op1' && mhstate=='demo')
+		if(pgstate=='op1' && mhstate=='demo')
 					{	cpf.request('["digitalWrite", 12 , 1]');
 						cpf.request('["digitalWrite", 13 , 1]');
 						MindRGBFan();
@@ -227,7 +231,7 @@ changeme('manual');
 						cpf.request('["digitalWrite", 13 , 0]');
 						MindRGBFan();
 					}
-					if(pgstate=='op1' && mhstate=='manual')
+					if(mhstate=='manual')
 					{
 						cpf.request('["digitalWrite", 12 , 0]');
 						cpf.request('["digitalWrite", 13 , 0]');
@@ -244,11 +248,19 @@ changeme('manual');
 						cpf.request('["digitalWrite", 12 , 0]');
 						cpf.request('["digitalWrite", 13 , 1]');
 					}
-					if(pgstate=='op2' && mhstate=='manual')
-					{
-						cpf.request('["digitalWrite", 12 , 0]');
-						cpf.request('["digitalWrite", 13 , 0]');
-					}
+		}
+	}
+	
+	// Analog
+	function loop() {
+		if(cpf){
+			lightdata = cpf.get("light sensor");
+			tempdata = cpf.get("temperature sensor");
+			mind1=cpf.get("d4");
+			mind2=cpf.get("d5");
+			mind3=cpf.get("d6");
+			
+					
 		}
 			celsius = toCelsius(tempdata);	
 			document.getElementById("lightvalue").innerHTML = lightdata;
