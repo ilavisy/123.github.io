@@ -16,7 +16,7 @@
 	  <tr>
 		  <td></td>
 		  <td>版號 </td>
-	      <td>5</td>
+	      <td> 0</td>
 		  <td></td>
 	  </tr>
     <tr>
@@ -252,15 +252,15 @@ changeme('manual');
 	
 	// Analog
 	function loopAn() {
-		if(cpf && opvalue=='op1'){
-			if(opvalue=='op1'){
+		if(cpf && pgstate=='op1'){
+			
 			lightdata = cpf.get("light sensor");
 			tempdata = cpf.get("temperature sensor");
-			}
-		}
 			celsius = toCelsius(tempdata);	
 			document.getElementById("lightvalue").innerHTML = lightdata;
 			document.getElementById("temperaturevalue").innerHTML = celsius;
+		}
+			
 			
 			
 			
