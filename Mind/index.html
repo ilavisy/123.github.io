@@ -16,7 +16,7 @@
 	  <tr>
 		  <td></td>
 		  <td>版號 </td>
-	      <td>0</td>
+	      <td>00</td>
 		  <td></td>
 	  </tr>
     <tr>
@@ -254,8 +254,11 @@ changeme('manual');
 	// Analog
 	function loop() {
 		if(cpf){
+			if(pgstate=='op1')
+					{
 			lightdata = cpf.get("light sensor");
 			tempdata = cpf.get("temperature sensor");
+					}
 			mind1=cpf.get("d4");
 			mind2=cpf.get("d5");
 			mind3=cpf.get("d6");
@@ -272,7 +275,7 @@ changeme('manual');
 			
 			
 		
-		setTimeout(loop, 1000);
+		setTimeout(loop, 2000);
 	}
 	
 	loop();
