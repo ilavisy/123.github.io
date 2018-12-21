@@ -179,10 +179,6 @@ changeme('manual');
 		document.getElementById("method2").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
 		document.getElementById("method3").style.backgroundColor="initial";
-		
-				
-		
-		
 		}
 		else if(mevalue=='mind')
 		{document.getElementById("method2").style.color = "blue";
@@ -191,9 +187,7 @@ changeme('manual');
 		document.getElementById("method1").style.backgroundColor="initial";
 		document.getElementById("method3").style.color = "black";
 		document.getElementById("method3").style.backgroundColor="initial";
-	
-		
-		}
+	}
 	    else if(mevalue=='demo')
 		{document.getElementById("method3").style.color = "blue";
 		document.getElementById("method3").style.backgroundColor="grey";
@@ -220,7 +214,7 @@ changeme('manual');
 	function cpftouno()
 	{
 		if(cpf){
-		if(pgstate=='op1' && mhstate=='demo')
+					if(pgstate=='op1' && mhstate=='demo')
 					{	cpf.request('["digitalWrite", 12 , 1]');
 						cpf.request('["digitalWrite", 13 , 1]');
 						MindRGBFan();
@@ -294,7 +288,7 @@ changeme('manual');
 			
 			
 		
-		setTimeout(loop, 500);
+		setTimeout(loop, 1000);
 	}
 	
 	loop();
@@ -495,10 +489,7 @@ changeme('manual');
 		}
 	}
 		
-			
 	
-	/*//if(cpf){
-//			cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1],["setPinMode", "digital", 2,"OUTPUT"],["setPinMode", "digital", 3,"PWM"],["setPinMode", "digital", 4,"INPUT"],["setPinMode", "digital", 5,"INPUT"],["setPinMode", "digital", 6,"INPUT"],["setPinMode", "digital", 9,"OUTPUT"],["setPinMode", "digital", 10,"OUTPUT"],["setPinMode", "digital", 11,"OUTPUT"],["setPinMode", "digital", 12,"OUTPUT"],["setPinMode", "digital", 13,"OUTPUT"]'); }*/
 </script>	
 
 
